@@ -1,3 +1,11 @@
+substitutions:
+  PIN_BTN: GPIO4
+  PIN_RELAY: GPIO12
+  PIN_SEL: GPIO03
+  PIN_CF: GPIO14
+  PIN_CF1: GPIO14
+  PIN_LED: GPIO05
+
 packages:
     minimal: !include minimal.yaml
 
@@ -78,7 +86,7 @@ binary_sensor:
   # Push Button (Toggles Relay When Pressed)
   - platform: gpio
     pin:
-      number: GPIO3
+      number: ${PIN_BTN}
       mode: INPUT_PULLUP
       inverted: true
     name: "Button"
@@ -109,7 +117,7 @@ switch:
   - platform: gpio
     name: ""
     icon: "mdi:${main_icon}"
-    pin: GPIO14
+    pin: ${PIN_RELAY}
     id: relay
     restore_mode: "${default_state}"
     on_turn_on:
@@ -232,10 +240,10 @@ sensor:
   - platform: hlw8012
     id: power_monitor
     sel_pin:
-      number: GPIO12
+      number: ${PIN_SEL}
       inverted: true
-    cf_pin: GPIO4
-    cf1_pin: GPIO5
+    cf_pin: ${PIN_CF}
+    cf1_pin: ${PIN_CF1}
     update_interval: 10s
     
     voltage:
@@ -324,7 +332,7 @@ output:
   - platform: esp8266_pwm
     id: state_led
     pin:
-      number: GPIO13
+      number: ${PIN_LED}
       inverted: true
 
 light:
