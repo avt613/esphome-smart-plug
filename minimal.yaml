@@ -4,7 +4,7 @@ substitutions:
   name: "localbytes-plug-pm"
   friendly_name: "Localbytes Plug PM"
   main_icon: "power-socket-uk"
-  name_add_mac_suffix: true
+  name_add_mac_suffix: "true"
 
   # Default Relay State
   # Aka: `restore_mode` in documentation
